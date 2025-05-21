@@ -1,8 +1,14 @@
 [
   {
     "title": "ETL con Apache Spark",
-    "description": "Pipeline de transformación de datos en S3 con Spark y Glue",
+    "description": "Pipeline de datos con Spark y AWS Glue para transformar datasets masivos.",
     "tech": ["Spark", "AWS", "Python"],
-    "github": "https://github.com/usuario/spark-etl"
+    "github": "https://github.com/tu-usuario/spark-etl"
+  },
+  {
+    "title": "Orquestación con Airflow",
+    "description": "Flujo de tareas automatizado con DAGs de Airflow para ingestión diaria de datos.",
+    "tech": ["Airflow", "PostgreSQL", "Docker"],
+    "github": "https://github.com/tu-usuario/airflow-pipeline"
   }
 ]
