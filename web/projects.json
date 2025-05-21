@@ -1,0 +1,8 @@
+[
+  {
+    "title": "ETL con Apache Spark",
+    "description": "Pipeline de transformación de datos en S3 con Spark y Glue",
+    "tech": ["Spark", "AWS", "Python"],
+    "github": "https://github.com/usuario/spark-etl"
+  }
+]
