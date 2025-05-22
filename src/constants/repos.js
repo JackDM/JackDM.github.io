@@ -1,3 +1,3 @@
 export const repos = [
-  "JackDM/etl-pipeline-spark Public "
+  "JackDM/etl-pipeline-spark"
 ];
