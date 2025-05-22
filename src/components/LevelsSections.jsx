@@ -161,4 +161,92 @@ function ModalDetails({ children, onClose }) {
 	return createPortal(modalContent, document.body);
 }
 
+export function ExperienceSection() {
+	const [modal, setModal] = React.useState(null);
+	return (
+		<>
+			<section className="level-section" style={{ marginTop: 0, position: 'relative', background: 'none', boxShadow: 'none', borderRadius: 0, padding: 0 }}>
+				<h2 className="projects-title" style={{ margin: '4rem 0 2.5rem 0' }}>Experiencia</h2>
+				<div className="level-cards" style={{ marginBottom: '4rem' }}>
+					{experience.map((exp, i) => (
+						<div
+							className="level-card-hover-wrapper"
+							key={exp.company}
+							onClick={() => setModal(i)}
+							style={{ position: 'relative', cursor: 'pointer' }}
+						>
+							<motion.div
+								className="level-card"
+								custom={i}
+								initial="initial"
+								whileInView="animate"
+								viewport={{ once: true }}
+								variants={cardVariants}
+							>
+								<div className="level-card-header">
+									<span className="level-card-role exp-gradient" style={{whiteSpace: "nowrap", fontSize: "1.05rem"}}>{exp.role}</span>
+								</div>
+								<div className="level-card-company exp-gradient" style={{whiteSpace: "nowrap", fontSize: "1.15rem"}}>{exp.company}</div>
+								<div className="level-card-period exp-gradient" style={{margin: "0.2rem 0 0.7rem 0", fontSize: "1.05rem"}}>{exp.period}</div>
+								<div className="level-card-desc" style={{whiteSpace: "normal", fontSize: "1rem"}}>{exp.description}</div>
+							</motion.div>
+						</div>
+					))}
+				</div>
+			</section>
+			{modal !== null && (
+				<ModalDetails onClose={() => setModal(null)}>
+					<h4 className="panel-title">Más detalles</h4>
+					<p className="panel-desc">{experience[modal].company} — <span className="exp-gradient">{experience[modal].role}</span><br/><span className="level-card-period exp-gradient">{experience[modal].period}</span></p>
+					<p className="panel-extra">{experience[modal].description}<br/><span style={{color:'#43e97b'}}>Contacto: contacto@{experience[modal].company.toLowerCase().replace(/\s/g,'')}.com</span></p>
+				</ModalDetails>
+			)}
+		</>
+	);
+}
+
+export function EducationSection() {
+	const [modal, setModal] = React.useState(null);
+	return (
+		<>
+			<section className="level-section" style={{ marginTop: 0, position: 'relative', background: 'none', boxShadow: 'none', borderRadius: 0, padding: 0 }}>
+				<h2 className="projects-title" style={{ margin: '2.5rem 0 2.5rem 0' }}>Formación</h2>
+				<div className="level-cards">
+					{education.map((edu, i) => (
+						<div
+							className="level-card-hover-wrapper"
+							key={edu.institution}
+							onClick={() => setModal(i)}
+							style={{ position: 'relative', cursor: 'pointer' }}
+						>
+							<motion.div
+								className="level-card"
+								custom={i}
+								initial="initial"
+								whileInView="animate"
+								viewport={{ once: true }}
+								variants={cardVariants}
+							>
+								<div className="level-card-header">
+									<span className="level-card-role edu-gradient" style={{whiteSpace: "nowrap", fontSize: "1.05rem"}}>{edu.degree}</span>
+								</div>
+								<div className="level-card-company edu-gradient" style={{whiteSpace: "nowrap", fontSize: "1.15rem"}}>{edu.institution}</div>
+								<div className="level-card-period edu-gradient" style={{margin: "0.2rem 0 0.7rem 0", fontSize: "1.05rem"}}>{edu.period}</div>
+								<div className="level-card-desc" style={{whiteSpace: "normal", fontSize: "1rem"}}>{edu.description}</div>
+							</motion.div>
+						</div>
+					))}
+				</div>
+			</section>
+			{modal !== null && (
+				<ModalDetails onClose={() => setModal(null)}>
+					<h4 className="panel-title">Más detalles</h4>
+					<p className="panel-desc">{education[modal].institution} — <span className="edu-gradient">{education[modal].degree}</span><br/><span className="level-card-period edu-gradient">{education[modal].period}</span></p>
+					<p className="panel-extra">{education[modal].description}<br/><span style={{color:'#21d4fd'}}>Web: www.{education[modal].institution.toLowerCase().replace(/\s/g,'')}.edu</span></p>
+				</ModalDetails>
+			)}
+		</>
+	);
+}
+
 export default LevelsSection;
