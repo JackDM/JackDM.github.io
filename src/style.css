@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +8,34 @@ body {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: #fff;
   overflow-x: hidden;
+}
+
+.modern-title {
+  font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.rainbow-gradient {
+  background: linear-gradient(90deg, #ff6ec4 0%, #7873f5 30%, #42e695 60%, #fad961 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: rainbow-move 4s linear infinite;
+}
+
+@keyframes rainbow-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.text-gradient-2 {
+  background: linear-gradient(90deg, #f7971e 0%, #ffd200 50%, #21d4fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 main {
@@ -153,6 +183,100 @@ footer {
   opacity: 0.8;
 }
 
+.level-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto 2rem auto;
+  padding: 2rem 1rem 1rem 1rem;
+  border-radius: 2rem;
+  background: linear-gradient(120deg, rgba(255,110,196,0.10) 0%, rgba(66,230,149,0.10) 100%);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+  position: relative;
+  z-index: 2;
+}
+.level-title {
+  font-size: 2.5rem;
+  font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+  text-align: center;
+  background: linear-gradient(90deg, #ff6ec4 0%, #42e695 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.exp-gradient {
+  background: linear-gradient(90deg, #ff6ec4 0%, #42e695 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.edu-gradient {
+  background: linear-gradient(90deg, #21d4fd 0%, #b721ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.level-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.level-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(66,230,149,0.13) 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  padding: 2rem 1.5rem;
+  min-width: 260px;
+  max-width: 340px;
+  flex: 1 1 300px;
+  border: 2px solid rgba(255,255,255,0.08);
+  transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.level-card:hover {
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+  box-shadow: 0 12px 40px 0 rgba(0,0,0,0.28);
+  border: 2px solid #ff6ec4;
+}
+.level-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.level-card-role {
+  color: #fad961;
+  background: linear-gradient(90deg, #fad961 0%, #f7971e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.level-card-period {
+  color: #42e695;
+  background: linear-gradient(90deg, #42e695 0%, #3bb2b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.level-card-company {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.level-card-desc {
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 600px) {
   section {
     padding: 1rem 0.5rem;
@@ -169,6 +293,13 @@ footer {
   }
   .level-title {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .level-cards {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
