@@ -1,3 +1,4 @@
 export const repos = [
-  "JackDM/etl-pipeline-spark"
+  "JackDM/etl-pipeline-spark",
+  "JackDM/data-lakehouse-modern"
 ];

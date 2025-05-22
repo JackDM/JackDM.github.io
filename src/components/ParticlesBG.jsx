@@ -2,16 +2,19 @@ import { useEffect } from "react";
 
 export default function ParticlesBG() {
   useEffect(() => {
-    const canvas = document.getElementById("particles-bg");
-    if (!canvas) return;
+    // Crear el canvas si no existe
+    let canvas = document.getElementById("particles-bg");
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.id = "particles-bg";
+      document.body.prepend(canvas);
+    }
     const ctx = canvas.getContext("2d");
     let w = window.innerWidth;
     let h = window.innerHeight;
     canvas.width = w;
     canvas.height = h;
-    // Fondo gradiente animado
     let gradStep = 0;
-    // Partículas tipo estrellas
     let particles = Array.from({ length: 150 }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -56,7 +59,11 @@ export default function ParticlesBG() {
       canvas.height = h;
     };
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      // Limpieza opcional: eliminar el canvas si se desmonta el componente
+      // canvas.remove();
+    };
   }, []);
   return null;
 }

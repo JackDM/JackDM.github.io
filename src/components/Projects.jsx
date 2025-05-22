@@ -1,29 +1,50 @@
 import React, { useEffect, useState } from "react";
-import ProjectCard from "./ProjectCard";
+import { motion } from "framer-motion";
 import { repos } from "../constants/repos";
 
-const levelColors = [
-  "#43e97b", "#38f9d7", "#fa8bff", "#2bd2ff", "#2bff88", "#a18cd1"
-];
+const cardVariants = {
+  initial: { opacity: 0, y: 40, scale: 0.95 },
+  animate: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { delay: 0.2 + i * 0.12, type: "spring", stiffness: 60 }
+  })
+};
 
-const ProjectLevel = ({ level, title, description, repoUrl, demoUrl, unlocked }) => (
-  <div className={`project-level-card ${unlocked ? "unlocked" : "locked"}`}
-    style={{
-      border: `2px solid ${levelColors[level % levelColors.length]}`,
-      boxShadow: unlocked ? `0 0 24px 0 ${levelColors[level % levelColors.length]}55` : "none"
+const ProjectLevel = ({ title, description, tech, github, demoUrl, i }) => (
+  <motion.div
+    className="project-level-card"
+    custom={i}
+    initial="initial"
+    whileInView="animate"
+    viewport={{ once: true }}
+    variants={cardVariants}
+    whileHover={{ x: 20 }}
+    transition={{
+      type: "spring",
+      stiffness: 120,
+      damping: 8,
+      duration: 0.4,
+      repeat: Infinity,
+      repeatType: "reverse"
     }}
+    style={{ cursor: 'pointer' }}
   >
-    <div className="level-badge" style={{ background: levelColors[level % levelColors.length] }}>
-      Nivel {level + 1}
-    </div>
-    <h3 className="level-title">{title}</h3>
-    <p className="level-desc">{description}</p>
-    <div className="level-links">
-      <a href={repoUrl} target="_blank" rel="noopener noreferrer">Repositorio</a>
+    <h3 className="level-title" style={{textAlign: 'center'}}>{title}</h3>
+    <p className="level-desc" style={{textAlign: 'center'}}>{description}</p>
+    {tech && tech.length > 0 && (
+      <div className="project-tech-chips" style={{justifyContent: 'center'}}>
+        {tech.map((t, idx) => (
+          <span className="project-chip" key={idx}>{t}</span>
+        ))}
+      </div>
+    )}
+    <div className="level-links" style={{justifyContent: 'center'}}>
+      <a href={github} target="_blank" rel="noopener noreferrer">Repositorio</a>
       {demoUrl && <a href={demoUrl} target="_blank" rel="noopener noreferrer">Demo</a>}
     </div>
-    {!unlocked && <div className="level-locked">🔒 Bloqueado</div>}
-  </div>
+  </motion.div>
 );
 
 const Projects = () => {
@@ -36,6 +57,7 @@ const Projects = () => {
           const url = `https://raw.githubusercontent.com/${repo}/main/metadata.json`;
           try {
             const res = await fetch(url);
+            if (!res.ok) return null;
             return await res.json();
           } catch {
             return null;
@@ -47,37 +69,17 @@ const Projects = () => {
     fetchAll();
   }, []);
 
-  // Ejemplo de estructura de niveles (puedes conectar esto a tu fetch real)
-  const levels = [
-    {
-      title: "ETL Pipeline con Spark",
-      description: "Automatiza y transforma datos a gran escala usando Apache Spark.",
-      repoUrl: "https://github.com/JackDM/etl-pipeline-spark",
-      demoUrl: "",
-      unlocked: true
-    },
-    {
-      title: "Juego de plataformas JS",
-      description: "Un juego retro hecho en JavaScript puro.",
-      repoUrl: "https://github.com/JackDM/platformer-js",
-      demoUrl: "https://jackdm.github.io/platformer-js/",
-      unlocked: false
-    },
-    {
-      title: "Portfolio 3D",
-      description: "Mi portfolio interactivo en 3D con Three.js.",
-      repoUrl: "https://github.com/JackDM/portfolio-3d",
-      demoUrl: "https://jackdm.github.io/portfolio-3d/",
-      unlocked: false
-    }
-  ];
-
   return (
     <section className="levels-section">
+      <h2 className="modern-title rainbow-gradient projects-title">Proyectos</h2>
       <div className="levels-grid">
-        {levels.map((lvl, i) => (
-          <ProjectLevel key={i} level={i} {...lvl} />
-        ))}
+        {repos.map((_, i) =>
+          projects[i] ? <ProjectLevel key={i} i={i} {...projects[i]} /> : (
+            <div className="project-level-card" key={i} style={{textAlign: 'center', opacity: 0.7}}>
+              No se pudo cargar el proyecto.
+            </div>
+          )
+        )}
       </div>
     </section>
   );
