@@ -4,6 +4,11 @@
 # Salir si hay un error
 set -e
 
+# Limpiar dependencias y reinstalar siempre antes de build
+rm -rf node_modules package-lock.json
+echo "Instalando dependencias frescas..."
+npm install
+
 # Construir el proyecto
 npm run build
 
