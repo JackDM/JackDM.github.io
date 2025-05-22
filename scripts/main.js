@@ -1,6 +1,5 @@
 const repos = [
-  "etl-pipeline-spark",
-  "airflow-dags-ingestion"
+  "etl-pipeline-spark"
   // Añade más repos aquí
 ];
 
