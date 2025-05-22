@@ -11,7 +11,7 @@ npm run build
 git_branch=$(git rev-parse --abbrev-ref HEAD)
 
 echo "Cambiando a rama gh-pages..."
-git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
+git checkout gh-pages
 
 echo "Eliminando archivos antiguos..."
 git rm -rf . > /dev/null 2>&1 || true
