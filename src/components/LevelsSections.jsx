@@ -132,7 +132,13 @@ function ModalDetails({ children, onClose }) {
 	React.useEffect(() => {
 		const onKey = (e) => { if (e.key === 'Escape') onClose(); };
 		document.addEventListener('keydown', onKey);
-		return () => document.removeEventListener('keydown', onKey);
+		// Bloquear scroll
+		const originalOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		return () => {
+			document.removeEventListener('keydown', onKey);
+			document.body.style.overflow = originalOverflow;
+		};
 	}, [onClose]);
 
 	const modalContent = (
