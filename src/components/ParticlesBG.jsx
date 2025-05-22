@@ -9,7 +9,7 @@ export default function ParticlesBG() {
     let h = window.innerHeight;
     canvas.width = w;
     canvas.height = h;
-    let particles = Array.from({ length: 60 }, () => ({
+    let particles = Array.from({ length: 150 }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
       r: Math.random() * 2 + 1,

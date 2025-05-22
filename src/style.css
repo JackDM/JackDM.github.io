@@ -69,12 +69,106 @@ footer {
   border-radius: 4px;
 }
 
+.levels-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem 1rem;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.project-level-card {
+  background: rgba(30, 30, 60, 0.95);
+  border-radius: 1.5rem;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
+  border: 2px solid #43e97b;
+  z-index: 1;
+}
+.project-level-card.unlocked:hover {
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+  box-shadow: 0 8px 40px 0 #43e97b55;
+  border-color: #fa8bff;
+}
+.project-level-card.locked {
+  opacity: 0.7;
+  filter: grayscale(0.5);
+}
+.level-badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.4rem 1.2rem;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+  letter-spacing: 1px;
+}
+.level-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem 0;
+  background: linear-gradient(90deg, #fa8bff, #2bd2ff, #2bff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.level-desc {
+  color: #d1d5db;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.level-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.level-links a {
+  color: #43e97b;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.level-links a:hover {
+  color: #fa8bff;
+}
+.level-locked {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  font-size: 1.5rem;
+  color: #fa8bff;
+  opacity: 0.8;
+}
+
 @media (max-width: 600px) {
   section {
     padding: 1rem 0.5rem;
   }
   .project-card {
     padding: 1rem 0.5rem;
+  }
+  .levels-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .project-level-card {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+  }
+  .level-title {
+    font-size: 1.3rem;
   }
 }
 
