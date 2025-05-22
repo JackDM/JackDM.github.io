@@ -9,7 +9,7 @@ const Hero = () => (
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      Bienvenido al Portfolio de Daniel
+      Bienvenido a CVflow
     </motion.h1>
     <p className="mt-4 text-xl text-gray-400">Explora mis proyectos como si fueran niveles de un videojuego.</p>
   </section>
