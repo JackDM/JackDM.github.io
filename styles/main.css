@@ -1,54 +1,68 @@
 :root {
-  --bg: #0d0d0f;
+  --bg: #0f0f1a;
+  --text: #ffffff;
   --primary: #7f5af0;
-  --accent-blue: #3fbfff;
+  --secondary: #3fbfff;
   --accent-green: #00ffae;
-  --text: #eaeaea;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
+  background: linear-gradient(135deg, #0d0d1d, #1a1a2e);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
   color: var(--text);
-  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@keyframes gradientFlow {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 .hero {
   text-align: center;
-  padding: 4rem 1rem;
-  background: linear-gradient(135deg, var(--primary), var(--accent-blue));
-  color: black;
+  padding: 5rem 1rem;
+  animation: fadeIn 2s ease;
 }
 
 .projects {
   padding: 2rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding-bottom: 4rem;
 }
 
 .project-card {
-  background-color: #16161a;
-  border: 1px solid var(--primary);
-  padding: 1rem;
-  border-radius: 1rem;
-  transition: 0.3s ease;
+  background: linear-gradient(135deg, #1f1f3c, #2b2b4a);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(127, 90, 240, 0.3);
+  transition: transform 0.4s ease, background 0.6s ease;
+  cursor: pointer;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-green);
+  transform: scale(1.04) rotateZ(-1deg);
+  background: linear-gradient(135deg, var(--primary), var(--accent-green));
 }
 
 .project-card h3 {
   margin-top: 0;
-  color: var(--accent-blue);
+  color: var(--secondary);
+}
+
+.project-card a {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .footer {
@@ -56,4 +70,11 @@ body {
   padding: 2rem;
   font-size: 0.9rem;
   color: #aaa;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

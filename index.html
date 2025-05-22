@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daniel | Portfolio Data Engineer</title>
-  <link rel="stylesheet" href="styles/main.css" />
-</head>
-<body>
-  <header class="hero">
-    <h1>Daniel – Data Engineer</h1>
-    <p>Construyendo soluciones de datos escalables</p>
-  </header>
+<!-- Contenedor para las partículas -->
+<div id="tsparticles"></div>
 
-  <section class="projects">
-    <h2>Proyectos</h2>
-    <div id="projects-container" class="project-grid"></div>
-  </section>
+<!-- tsParticles CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
 
-  <footer class="footer">
-    <p>© 2025 Daniel. Portfolio minimalista y eficiente.</p>
-  </footer>
-
-  <script src="scripts/main.js"></script>
-</body>
-</html>
+<!-- Configuración de partículas -->
+<script>
+  tsParticles.load("tsparticles", {
+    background: { color: "#0f0f1a" },
+    particles: {
+      color: { value: ["#7f5af0", "#00ffae", "#3fbfff"] },
+      move: { enable: true, speed: 0.6 },
+      size: { value: { min: 1, max: 3 } },
+      number: { value: 80 },
+      opacity: { value: 0.3 },
+      links: {
+        enable: true,
+        color: "#ffffff",
+        opacity: 0.1
+      }
+    },
+    fullScreen: { zIndex: -1 }
+  });
+</script>
