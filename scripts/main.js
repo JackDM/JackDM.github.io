@@ -4,7 +4,7 @@ const repos = [
   // Añade más repos aquí
 ];
 
-const githubUser = "tu-usuario"; // <-- reemplázalo
+const githubUser = "JackDM"
 
 const container = document.getElementById("projects-container");
 
