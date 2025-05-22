@@ -46,7 +46,7 @@ const cardVariants = {
 	}),
 };
 
-export function LevelsSection() {
+function LevelsSection() {
 	const [modal, setModal] = React.useState(null); // {type: 'exp'|'edu', index: number}
 
 	return (
@@ -160,3 +160,5 @@ function ModalDetails({ children, onClose }) {
 	);
 	return createPortal(modalContent, document.body);
 }
+
+export default LevelsSection;
