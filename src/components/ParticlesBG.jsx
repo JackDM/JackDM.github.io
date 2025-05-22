@@ -9,25 +9,42 @@ export default function ParticlesBG() {
     let h = window.innerHeight;
     canvas.width = w;
     canvas.height = h;
+    // Fondo gradiente animado
+    let gradStep = 0;
+    // Partículas tipo estrellas
     let particles = Array.from({ length: 150 }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      r: Math.random() * 2 + 1,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: (Math.random() - 0.5) * 0.5,
-      color: `rgba(${100+Math.random()*155},${100+Math.random()*155},255,0.15)`
+      r: Math.random() * 1.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.2,
+      dy: (Math.random() - 0.5) * 0.2,
+      alpha: Math.random() * 0.5 + 0.5
     }));
     function draw() {
-      ctx.clearRect(0, 0, w, h);
+      gradStep += 0.002;
+      // Gradiente animado
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, `hsl(${200 + Math.sin(gradStep) * 40}, 80%, 18%)`);
+      grad.addColorStop(1, `hsl(${260 + Math.cos(gradStep) * 40}, 80%, 22%)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+      // Partículas
       for (const p of particles) {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-        ctx.fillStyle = p.color;
+        ctx.fillStyle = '#fff';
+        ctx.shadowColor = '#fff';
+        ctx.shadowBlur = 8;
         ctx.fill();
+        ctx.restore();
         p.x += p.dx;
         p.y += p.dy;
-        if (p.x < 0 || p.x > w) p.dx *= -1;
-        if (p.y < 0 || p.y > h) p.dy *= -1;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
       }
       requestAnimationFrame(draw);
     }

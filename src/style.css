@@ -21,7 +21,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
   animation: rainbow-move 4s linear infinite;
 }
 
@@ -35,7 +34,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 main {
@@ -52,7 +50,6 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 section {
@@ -152,7 +149,6 @@ footer {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 .level-desc {
   color: #d1d5db;
